@@ -1,6 +1,6 @@
 require "jquery-tablesorter-deduper-rails/version"
 
-module Ferroslider
+module JqueryTablesorterDeduperRails
   module Rails
     class Engine < ::Rails::Engine
     end
