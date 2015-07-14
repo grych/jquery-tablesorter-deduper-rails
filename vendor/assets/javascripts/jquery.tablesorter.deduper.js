@@ -1,5 +1,5 @@
 // DeDup JQuery tablesorter plugin
-// version 0.1
+// version 0.2
 // (c) 2015 Tomek 'Grych' Gryszkiewicz, grych@tg.pl
 // MIT License
 // https://github.com/grych/dedup
@@ -55,6 +55,10 @@
 // 'light': class for duplicated elements
 // * dupCompareFuction, default: function(x, y) {return x.toLowerCase() == y.toLowerCase();}: function for comparing strings
 //
+// ### Metadata:
+//
+// data-deduper="false" in table header to disable dedupering the given header
+//
 // ## CREDITS
 // (c) 2015 Tomek "Grych" Gryszkiewicz
 // grych@tg.pl
@@ -71,7 +75,6 @@ $(function() {
         return x.toLowerCase() == y.toLowerCase();
       }
     },
-    // format is called on init and when a sorting has finished
     format: function(table, c, wo) {
       // remove dupClass from all rows prior to sort
       $("td." + wo.dupClass, table).removeClass(wo.dupClass);
@@ -80,7 +83,7 @@ $(function() {
       // only visible rows
       c.$tbodies.children('tr:visible').each(function() { 
         $("td", this).each(function(i) {
-          if ( wo.dupCompareFunction(before_row[i].text(), $(this).text()) ) {
+          if ( $("th:eq(" + i + ")", table).data('deduper') != false && wo.dupCompareFunction(before_row[i].text(), $(this).text()) ) {
             $(this).addClass(wo.dupClass);
           }
         });

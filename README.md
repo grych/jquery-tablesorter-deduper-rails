@@ -57,6 +57,10 @@ DeDuper is a Tablesorter widget to hide duplicated values in columns
 'light': class for duplicated elements
 * dupCompareFuction, default: function(x, y) {return x.toLowerCase() == y.toLowerCase();}: function for comparing strings
 
+### Metadata:
+
+data-deduper="false" in table header to disable dedupering the given header
+
 ## CREDITS
 (c) 2015 Tomek "Grych" Gryszkiewicz
 
